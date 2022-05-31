@@ -1,22 +1,15 @@
-const Controller = require('./Controller')
+import Controller from './Controller'
+import IndexModel from '../models/IndexModel'
 
 class ApiController extends Controller {
   constructor() {
     super()
   }
 
-  actionDataList(ctx) {
-    ctx.body = [
-      {
-        id: 1,
-        name: 'apple'
-      },
-      {
-        id: 2,
-        name: 'orange'
-      },
-    ]
+  async actionDataList(ctx) {
+    const indexModel = new IndexModel()
+    ctx.body = await indexModel.getIndexModel()
   }
 }
 
-module.exports = ApiController
+export default ApiController

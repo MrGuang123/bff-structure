@@ -1,4 +1,4 @@
-const Controller = require('./Controller')
+import Controller from './Controller'
 
 class IndexController extends Controller {
   constructor() {
@@ -6,10 +6,11 @@ class IndexController extends Controller {
   }
 
   async actionIndex(ctx) {
+    // throw new Error('custom error')
     ctx.body = await ctx.render('index', {
       message: '后端渲染的数据'
     })
   }
 }
 
-module.exports = IndexController
+export default IndexController

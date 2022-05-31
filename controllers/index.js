@@ -1,7 +1,7 @@
-const Router = require('@koa/router')
+import Router from '@koa/router'
 
-const IndexController = require('./IndexController')
-const ApiController = require('./ApiController')
+import IndexController from './IndexController'
+import ApiController from './ApiController'
 
 const router = new Router()
 
@@ -16,4 +16,4 @@ function initController(app) {
     .use(router.allowedMethods())
 }
 
-module.exports = initController
+export default initController

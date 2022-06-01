@@ -1,3 +1,4 @@
 [2022-05-30T12:19:26.637] [ERROR] default - custom error
 [2022-05-30T12:19:46.292] [ERROR] default - ctx.render2 is not a function
 [2022-05-30T21:46:08.607] [ERROR] default - ctx.render2 is not a function
+[2022-06-01T22:09:23.333] [ERROR] default - ENOENT: no such file or directory, open '/Users/ytg/Documents/study/node-test/bff-structure/views/index.html'

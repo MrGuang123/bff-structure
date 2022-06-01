@@ -4,7 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon --exec 'babel-node ./app.js'",
+    "client:dev": "scripty",
+    "client:prod": "scripty",
+    "server:dev": "scripty",
+    "server:start": "scripty",
+    "server:prod": "scripty",
+    "jscpd": "jscpd --pattern 'src/**/*.js'",
+    "start": "NODE_ENV=development nodemon --exec 'babel-node ./src/server/app.js'",
     "test": "mocha --file ./tests/index.spec.js"
   },
   "keywords": [],
@@ -23,9 +29,17 @@
   "devDependencies": {
     "@babel/node": "^7.17.10",
     "@babel/preset-env": "^7.18.2",
+    "babel-loader": "^8.2.5",
     "chai": "^4.3.6",
+    "glob": "^8.0.3",
+    "jscpd": "^3.4.5",
     "mocha": "^10.0.0",
     "nodemon": "^2.0.16",
-    "supertest": "^6.2.3"
+    "scripty": "^2.1.0",
+    "supertest": "^6.2.3",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-merge": "^5.8.0",
+    "yargs": "^17.5.1"
   }
 }

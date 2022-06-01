@@ -1,8 +1,8 @@
 const path = require('path')
 
 let config = {
-  viewsPath: path.join(__dirname, '../', 'views'),
-  staticPath: path.join(__dirname, '../', 'public')
+  viewsPath: path.join(__dirname, '../../client', 'views'),
+  staticPath: path.join(__dirname, '../../client', 'public')
 }
 
 if (process.env.NODE_ENV === 'development') {

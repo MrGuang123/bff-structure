@@ -32,7 +32,7 @@ const logger = log4js.getLogger();
 // 初始化静态资源服务
 app.use(staticServe(config.staticPath))
 // 解决前后端路由兼容问题
-app.use(historyApiFallback({ index: '/', whiteList: ['/api'] }))
+app.use(historyApiFallback({ index: '/', whiteList: ['/api', '/books'] }))
 // 全局错误处理
 ErrorHandler.error(app, logger)
 

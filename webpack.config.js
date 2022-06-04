@@ -5,6 +5,7 @@ const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const InjectCssJsPlugin = require('./build/injectCssJsPlugin')
 
 const { mode } = argv
 const envConfig = require(`./build/webpack.${mode}.js`);
@@ -18,9 +19,10 @@ const entrys = files.reduce((all, url) => {
     all[entryKey] = `./src/client/views/${pageName}/${entryKey}.entry.js`
 
     htmlPlugins.push(new HtmlWebpackPlugin({
-      filename: `../client/views/${pageName}/pages/${actionName}.html`,
+      filename: `../views/${pageName}/pages/${actionName}.html`,
       template: `./src/client/views/${pageName}/pages/${actionName}.html`,
-      chunks: ['runtime', entryKey]
+      chunks: ['runtime', entryKey],
+      inject: false
     }))
   }
 
@@ -31,7 +33,7 @@ const baseConfig = {
   mode,
   entry: entrys,
   output: {
-    path: path.join(__dirname, './dist/assets'),
+    path: path.join(__dirname, './dist/client/assets'),
     filename: '[name].bundle.js'
   },
   module: {
@@ -53,14 +55,15 @@ const baseConfig = {
       patterns: [
         {
           from: path.join(__dirname, './src/client/views/layouts'),
-          to: '../client/views/layouts'
+          to: '../views/layouts'
         },
         {
           from: path.join(__dirname, './src/client/components'),
-          to: '../client/components'
+          to: '../components'
         },
       ]
-    })
+    }),
+    new InjectCssJsPlugin()
   ]
 }
 

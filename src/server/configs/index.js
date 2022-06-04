@@ -5,6 +5,10 @@ let config = {
   staticPath: path.join(__dirname, '../../client', 'public')
 }
 
+if (false) {
+  alert(1)
+}
+
 if (process.env.NODE_ENV === 'development') {
   const devConfig = {
     port: 3000,

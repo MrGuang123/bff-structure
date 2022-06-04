@@ -20,6 +20,10 @@ class BooksController extends Controller {
       ]
     })
   }
+
+  async actionBooksCreate(ctx) {
+    ctx.body = await ctx.render('books/pages/create')
+  }
 }
 
 export default BooksController

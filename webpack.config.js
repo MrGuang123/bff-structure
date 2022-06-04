@@ -4,7 +4,6 @@ const glob = require('glob');
 const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
 const InjectCssJsPlugin = require('./build/injectCssJsPlugin')
 
 const { mode } = argv
@@ -34,7 +33,7 @@ const baseConfig = {
   entry: entrys,
   output: {
     path: path.join(__dirname, './dist/client/assets'),
-    filename: '[name].bundle.js'
+    filename: '[name].[hash:8].js'
   },
   module: {
     rules: [
@@ -51,18 +50,6 @@ const baseConfig = {
   plugins: [
     ...htmlPlugins,
     new MiniCssExtractPlugin(),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.join(__dirname, './src/client/views/layouts'),
-          to: '../views/layouts'
-        },
-        {
-          from: path.join(__dirname, './src/client/components'),
-          to: '../components'
-        },
-      ]
-    }),
     new InjectCssJsPlugin()
   ]
 }
